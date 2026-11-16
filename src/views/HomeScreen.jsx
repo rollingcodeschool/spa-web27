@@ -1,4 +1,22 @@
+import { useState, useEffect } from "react";
+import { stickersNerd } from "../data/stickers";
+import ImgStickerApp from "../components/ImgStickerApp";
+
 const HomeScreen = () => {
+  const [stickers, setStickers] = useState([]);
+
+  useEffect(() => {
+    cargaInicial();
+  }, []);
+
+  function cargaInicial() {
+    if (!JSON.parse(localStorage.getItem("stickers"))) {
+      localStorage.setItem("stickers", JSON.stringify(stickersNerd));
+      setStickers(stickersNerd);
+    } else {
+      setStickers(JSON.parse(localStorage.getItem("stickers")));
+    }
+  }
   return (
     <>
       <div className="mx-auto md:w-1/2 px-2  pt-8 text-center">
@@ -12,32 +30,11 @@ const HomeScreen = () => {
             />
           </form>
         </section>
-        <section className="mt-8">
+        <section className="my-8">
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3">
-            <picture className="hover:transition-transform hover:rotate-2">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original"
-                alt="img 1"
-              />
-            </picture>
-            <picture className="hover:transition-transform hover:rotate-2">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original"
-                alt="img 1"
-              />
-            </picture>
-            <picture className="hover:transition-transform hover:rotate-2">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original"
-                alt="img 1"
-              />
-            </picture>
-            <picture className="hover:transition-transform hover:rotate-2">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original"
-                alt="img 1"
-              />
-            </picture>
+            {stickers.map((sticker) => (
+              <ImgStickerApp key={sticker.id} sticker={sticker} />
+            ))}
           </div>
         </section>
       </div>

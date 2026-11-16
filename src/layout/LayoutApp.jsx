@@ -4,7 +4,7 @@ import FooterApp from "../components/FooterApp";
 
 const LayoutApp = () => {
   return (
-    <div className="flex flex-col justify-between h-screen">
+    <div className="flex flex-col justify-between min-h-screen">
       <header>
         <NavBarApp />
       </header>
