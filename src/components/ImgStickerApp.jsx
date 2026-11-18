@@ -1,7 +1,11 @@
 const ImgStickerApp = (props) => {
-  const { sticker } = props;
+  const { sticker, getStickerById } = props;
   return (
-    <picture className="flex justify-center">
+    <picture
+      className="flex justify-center"
+      style={{ cursor: "pointer" }}
+      onClick={() => getStickerById(sticker.id)}
+    >
       <img className="sticker-img" src={sticker.url} alt={sticker.nombre} />
     </picture>
   );
