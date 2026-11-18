@@ -13,8 +13,8 @@ const NavBarApp = () => {
     },
     {
       id: 3,
-      path: "Login",
-      text: "Inicio de sesión",
+      path: "admin",
+      text: "Admin✨",
     },
   ];
 
