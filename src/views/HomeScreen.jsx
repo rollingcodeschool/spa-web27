@@ -17,11 +17,17 @@ const HomeScreen = () => {
       setStickers(JSON.parse(localStorage.getItem("stickers")));
     }
   }
+
+  //buscador
+
+  //Obtener un sticker por su id
+
   return (
     <>
       <div className="mx-auto md:w-1/2 px-2  pt-8 text-center">
         <h1 className="text-4xl font-bold">Stickers Nerds</h1>
         <section className="mt-5">
+          {/* buscador funcional  */}
           <form>
             <input
               type="text"
@@ -37,6 +43,7 @@ const HomeScreen = () => {
             ))}
           </div>
         </section>
+        {/* código para el modal  */}
       </div>
     </>
   );

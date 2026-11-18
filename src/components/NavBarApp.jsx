@@ -19,7 +19,7 @@ const NavBarApp = () => {
   ];
 
   return (
-    <nav className="w-screen flex justify-between px-10 py-5 items-center bg-indigo-600 text-white">
+    <nav className="w-full flex justify-between px-10 py-5 items-center bg-indigo-600 text-white">
       <div>
         <Link to="/">
           <span>Stickers Nerds</span>
