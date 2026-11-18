@@ -39,6 +39,9 @@ const HomeScreen = () => {
 
   // console.log(getStickerById(6));
 
+  //método para setear el valor de el estado sticker y así cerrar el modal
+  const hideModal = () => setSticker(null);
+
   return (
     <>
       <div className="mx-auto md:w-1/2 px-2  pt-8 text-center">
@@ -69,7 +72,7 @@ const HomeScreen = () => {
         {/* código para el modal  */}
         {sticker && (
           <section className="fixed inset-0 z-50  flex items-center justify-center bg-gray-500/60">
-            <ModalStickerInfoApp />
+            <ModalStickerInfoApp sticker={sticker} hideModal={hideModal} />
           </section>
         )}
       </div>
