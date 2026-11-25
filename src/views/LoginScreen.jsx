@@ -1,4 +1,29 @@
+import { UserContext } from "../context/UserContext";
+import { useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router";
+
 const LoginScreen = () => {
+  const { logIn, logOut } = useContext(UserContext);
+  const [correo, setCorreo] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    logOut();
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const validar = logIn(correo, password);
+
+    if (validar.ok) {
+      navigate("/");
+    } else {
+      console.error(validar.message);
+    }
+  };
+
   return (
     <main className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-10">
       <section className="w-full max-w-md rounded-2xl bg-white p-8 shadow-sm ring-1 ring-slate-200 sm:p-10">
@@ -11,7 +36,7 @@ const LoginScreen = () => {
           </p>
         </header>
 
-        <form className="space-y-5">
+        <form className="space-y-5" onSubmit={handleSubmit}>
           <div>
             <label
               htmlFor="email"
@@ -25,6 +50,8 @@ const LoginScreen = () => {
               type="email"
               autoComplete="email"
               required
+              value={correo}
+              onChange={(e) => setCorreo(e.target.value)}
               placeholder="tu@correo.com"
               className="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-violet-500 focus:ring-4 focus:ring-violet-100"
             />
@@ -43,6 +70,8 @@ const LoginScreen = () => {
               type="password"
               autoComplete="current-password"
               required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="Ingresá tu contraseña"
               className="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-violet-500 focus:ring-4 focus:ring-violet-100"
             />

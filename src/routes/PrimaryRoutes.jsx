@@ -4,7 +4,7 @@ import HomeScreen from "../views/HomeScreen";
 import AboutScreen from "../views/AboutScreen";
 import NotFoundScreen from "../views/NotFoundScreen";
 import AdminScreen from "../views/AdminScreen";
-import ProtectedRoutes from "./ProtectedRoutes";
+import ProtectedAdminRoute from "./ProtectedAdminRoute";
 
 const PrimaryRoutes = () => {
   return (
@@ -16,9 +16,9 @@ const PrimaryRoutes = () => {
         <Route
           path="admin"
           element={
-            <ProtectedRoutes>
+            <ProtectedAdminRoute>
               <AdminScreen />
-            </ProtectedRoutes>
+            </ProtectedAdminRoute>
           }
         />
       </Route>
